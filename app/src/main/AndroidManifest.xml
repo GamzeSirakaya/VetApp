@@ -11,14 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VetApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.RegisterActivity"></activity>
-        <activity android:name=".Activities.MainActivity">
+
+        <activity android:name=".Activities.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.MainActivity"></activity>
     </application>
 
 </manifest>
