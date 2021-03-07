@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#eb4d4b"
     android:layout_height="match_parent"
     tools:context=".Activities.RegisterActivity">
 
@@ -49,6 +50,7 @@
                 android:layout_marginTop="50dp">
 
                 <EditText
+                    android:id="@+id/register_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -65,6 +67,7 @@
                 android:layout_margin="10dp">
 
                 <EditText
+                    android:id="@+id/register_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -81,9 +84,11 @@
                 android:layout_margin="10dp">
 
                 <EditText
+                    android:id="@+id/register_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:inputType="textPassword"
                     android:hint="Şifrenizi giriniz"
                     android:textColor="@color/black" />
 
@@ -99,6 +104,7 @@
                 android:text="Hesabım zaten var"/>
 
             <Button
+                android:id="@+id/register_button"
                 android:layout_width="130dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
