@@ -12,14 +12,14 @@
         android:theme="@style/Theme.VetApp"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".Activities.RegisterActivity">
+        <activity android:name="com.example.vetapp.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity"></activity>
+
     </application>
 
 </manifest>
