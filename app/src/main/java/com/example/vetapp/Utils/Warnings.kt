@@ -1,7 +1,7 @@
 package com.example.vetapp.Utils
 
-class Warnings {
+interface Warnings {
+fun warning(warnings:String="İnternet Bağlantınızı Kontrol ediniz.")
 
-       val warnings:String="İnternet Bağlantınızı Kontrol ediniz."
 
 }
