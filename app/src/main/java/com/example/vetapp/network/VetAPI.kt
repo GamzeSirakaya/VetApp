@@ -1,5 +1,6 @@
 package com.example.vetapp.network
 
+import com.example.vetapp.Models.UserLogin
 import com.example.vetapp.Models.UserRegister
 import io.reactivex.Single
 import retrofit2.Call
@@ -16,6 +17,10 @@ interface VetAPI {
     fun getRegister(@Field("kadi") kadi:String,
                     @Field("mailAdres") mailAdres: String,
                     @Field("parola") parola:String):Single<UserRegister>
+    @FormUrlEncoded
+    @POST("girisyap.php")
+    fun getLogin(@Field("mail") mailAdres: String,
+                 @Field("password") password:String):Single<UserLogin>
 
     companion object{
         const val BASE_URL = "https://www.gamzesirakaya.com/veterinerservis/"
