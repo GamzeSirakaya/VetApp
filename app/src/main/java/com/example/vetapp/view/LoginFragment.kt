@@ -1,12 +1,15 @@
 package com.example.vetapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.vetapp.R
+import com.example.vetapp.databinding.FragmentLoginBinding
 import com.example.vetapp.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -15,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_register.register_text
 
 class LoginFragment : Fragment() {
     val loginViewModel = LoginViewModel()
+    private lateinit var dataBinding: FragmentLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +30,9 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +50,7 @@ class LoginFragment : Fragment() {
                 login_mail.editableText.toString(),
                 login_password.editableText.toString()
             )
+        messagelogin_text.visibility = View.VISIBLE
 
         }
     }
