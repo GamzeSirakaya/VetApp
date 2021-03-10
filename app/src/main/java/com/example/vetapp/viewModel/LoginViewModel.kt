@@ -1,8 +1,9 @@
 package com.example.vetapp.viewModel
 
-import android.content.Intent
 import android.util.Log
-import com.example.vetapp.Models.UserLogin
+import androidx.lifecycle.MutableLiveData
+import com.example.vetapp.modelss.UserLogin
+import com.example.vetapp.modelss.UserRegister
 import com.example.vetapp.network.VetAPI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -10,6 +11,7 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class LoginViewModel {
+    val userLoginLiveData = MutableLiveData<UserLogin>() //innerclass
     private val compositeDisposable = CompositeDisposable() //Rxjava2 inner class
     private val vetAPI = VetAPI
 
@@ -19,14 +21,8 @@ class LoginViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<UserLogin>() {
                     override fun onSuccess(t: UserLogin) {
-                        if (t.tf.toBoolean()) {
-                            t.text
-                            Log.d("text",t.text)
-
-                        } else {
-                            t.text
-                            Log.d("text",t.text)
-                        }
+                       userLoginLiveData.value=t
+                        Log.d("text",t.text)
 
                     }
 
