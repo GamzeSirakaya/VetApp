@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.vetapp.R
@@ -27,10 +28,9 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
 
-        return dataBinding.root
+
+        return  inflater.inflate(R.layout.fragment_register, container, false)
 
     }
 
@@ -38,6 +38,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         registerToUser()
         action()
+        observerLiveData()
 
     }
 
@@ -51,7 +52,7 @@ class RegisterFragment : Fragment() {
             )
 
 
-          message_text.visibility=View.VISIBLE
+
         }
     }
 
@@ -60,7 +61,17 @@ class RegisterFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
+    fun observerLiveData() {
+        registerViewModel.userRegisterLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {it.let {
+                userRegister->userRegister
+            Toast.makeText(context,it.text, Toast.LENGTH_LONG).show()
+        }
 
+
+        })
+
+
+    }
 
 
 }
