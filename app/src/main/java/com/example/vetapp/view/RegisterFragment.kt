@@ -39,6 +39,7 @@ class RegisterFragment : Fragment() {
         registerToUser()
         action()
         observerLiveData()
+        delete()
 
     }
 
@@ -54,6 +55,11 @@ class RegisterFragment : Fragment() {
 
 
         }
+    }
+    fun delete(){
+        register_name.setText("")
+        register_mail.setText("")
+        register_password.setText("")
     }
 
     fun action() {
