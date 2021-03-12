@@ -18,13 +18,14 @@ class LoginViewModel {
     private val compositeDisposable = CompositeDisposable() //Rxjava2 inner class
     private val vetAPI = VetAPI
 
-    fun userLogin(mailadres: String, password: String) {
+    fun userLogin( mailadres: String, password: String) {
         compositeDisposable.add(
             vetAPI.getService().getLogin(mailadres, password).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<UserLogin>() {
                     override fun onSuccess(t: UserLogin) {
                         userLoginLiveData.value = t
+                        //GetSharedPref.init()
                         //GetSharedPref.save(t.id,t.kadi,t.mailAdres)
                     }
 
