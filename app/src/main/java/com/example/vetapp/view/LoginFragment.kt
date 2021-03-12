@@ -12,6 +12,7 @@ import android.widget.Toast.makeText
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.vetapp.R
+import com.example.vetapp.Utils.GetSharedPref
 import com.example.vetapp.databinding.FragmentLoginBinding
 import com.example.vetapp.modelss.UserLogin
 import com.example.vetapp.viewModel.LoginViewModel
@@ -46,6 +47,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         action()
         observerLiveData()
+        delete()
     }
 
     fun action() {
@@ -60,11 +62,16 @@ class LoginFragment : Fragment() {
             )
         }
     }
-
+    fun delete()
+    {
+        login_mail.setText("")
+        login_password.setText("")
+    }
     fun observerLiveData() {
         loginViewModel.userLoginLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {it.let {
             userLogin -> userLogin
             Toast.makeText(context,it.text,Toast.LENGTH_LONG).show()
+
         }
 
 
