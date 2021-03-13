@@ -12,7 +12,7 @@ import com.example.vetapp.Utils.GetSharedPref
 
 
 class HomeFragment : Fragment() {
-    lateinit var sharedPreferences: SharedPreferences
+   // lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
