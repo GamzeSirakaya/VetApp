@@ -25,8 +25,8 @@ class LoginViewModel {
                 .subscribeWith(object : DisposableSingleObserver<UserLogin>() {
                     override fun onSuccess(t: UserLogin) {
                         userLoginLiveData.value = t
-                        //GetSharedPref.init()
-                        //GetSharedPref.save(t.id,t.kadi,t.mailAdres)
+
+                       // GetSharedPref.save(t.id,t.kadi,t.mailAdres)
                     }
 
                     override fun onError(e: Throwable) {
