@@ -1,6 +1,7 @@
 package com.example.vetapp.Utils
 
 import android.app.Activity
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
@@ -10,9 +11,9 @@ import com.example.vetapp.view.MainActivity
 
 object GetSharedPref {
     lateinit var sharedPreferences: SharedPreferences
-    fun init(activity: Activity) {
+    fun init(context: Context) {
 
-        sharedPreferences = activity.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        sharedPreferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
     }
 
     fun save(id: Int, name: String, mail: String) {
