@@ -16,13 +16,13 @@ object GetSharedPref {
         sharedPreferences = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
     }
 
-    fun save(id: Int, name: String, mail: String) {
-        sharedPreferences.edit().putInt("id", id).apply()
-        sharedPreferences.edit().putString("name", name).apply()
-        sharedPreferences.edit().putString("mail", mail).apply()
+    fun save(pass: String, mail: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("pass", pass).apply()
+        editor.putString("mail", mail).apply()
+        editor.commit()
 
     }
-
 
 
 }
