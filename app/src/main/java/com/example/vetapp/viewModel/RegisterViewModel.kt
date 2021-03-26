@@ -2,7 +2,7 @@ package com.example.vetapp.viewModel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.vetapp.modelss.UserRegister
+import com.example.vetapp.model.UserRegister
 import com.example.vetapp.network.VetAPI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
