@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.vetapp.R
 import com.example.vetapp.Utils.GetSharedPref
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
-   // lateinit var sharedPreferences: SharedPreferences
+    // lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +22,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       /* if(sharedPreferences.getInt("id",0)==null&&
-            sharedPreferences.getString("name",null)==null&&
-            sharedPreferences.getString("mail",null)==null){
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
-        }*/
+        /* if(sharedPreferences.getInt("id",0)==null&&
+             sharedPreferences.getString("name",null)==null&&
+             sharedPreferences.getString("mail",null)==null){
+             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+         }*/
+        action()
 
     }
 
@@ -38,7 +40,12 @@ class HomeFragment : Fragment() {
 
 
 
+    }
 
+    fun action() {
+        petlerim.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_userPetsFragment)
+        }
     }
 
 
