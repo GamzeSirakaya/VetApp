@@ -9,20 +9,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.example.vetapp.R
-import com.example.vetapp.Utils.GetSharedPref
-import com.example.vetapp.databinding.FragmentLoginBinding
-import com.example.vetapp.modelss.UserLogin
 import com.example.vetapp.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_register.*
 
 
 class LoginFragment : Fragment() {
     lateinit var sharedPreferences: SharedPreferences
     val loginViewModel = LoginViewModel()
-    private lateinit var userLogin: UserLogin
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
 
     }
@@ -40,8 +39,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        action()
+
         observerLiveData()
+        action()
         delete()
 
     }
@@ -57,6 +57,8 @@ class LoginFragment : Fragment() {
                 login_password.editableText.toString()
             )
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_homeFragment)
+
+
         }
     }
 
@@ -70,13 +72,18 @@ class LoginFragment : Fragment() {
             it.let { userLogin ->
                 userLogin
                 Toast.makeText(context, it.text, Toast.LENGTH_LONG).show()
+                /*this@LoginFragment.context?.let { GetSharedPref.init(it) }
+                GetSharedPref.save(login_mail.editableText.toString(),login_password.editableText.toString())
 
-                /*context?.let { it1 -> GetSharedPref.init(it1) }
-
-                sharedPreferences.getInt("id", id)
-                sharedPreferences.getString("name", register_name.editableText.toString())
-                sharedPreferences.getString("mail", login_mail.editableText.toString())*/
-
+                if (sharedPreferences.getString(
+                        "pass",
+                        ""
+                    ) == null &&
+                    sharedPreferences.getString("mail","") == null
+                ) {
+                    Log.i("sdfghjkl","fghjklş")
+                    view?.let { it1 ->  }
+                }*/
 
             }
 
@@ -85,4 +92,7 @@ class LoginFragment : Fragment() {
 
 
     }
+
+
 }
+
