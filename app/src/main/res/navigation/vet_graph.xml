@@ -29,5 +29,14 @@
         android:id="@+id/homeFragment"
         android:name="com.example.vetapp.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_userPetsFragment"
+            app:destination="@id/userPetsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPetsFragment"
+        android:name="com.example.vetapp.view.UserPetsFragment"
+        android:label="fragment_user_pets"
+        tools:layout="@layout/fragment_user_pets" />
 </navigation>
