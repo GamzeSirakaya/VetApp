@@ -1,18 +1,13 @@
 package com.example.vetapp.view
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.vetapp.R
-import com.example.vetapp.Utils.GetSharedPref
-import com.example.vetapp.databinding.FragmentRegisterBinding
-import com.example.vetapp.modelss.UserRegister
 import com.example.vetapp.viewModel.RegisterViewModel
 import kotlinx.android.synthetic.main.fragment_register.*
 
@@ -20,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_register.*
 class RegisterFragment : Fragment() {
 
     val registerViewModel = RegisterViewModel()
-    private lateinit var dataBinding: FragmentRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
