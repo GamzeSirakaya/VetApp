@@ -7,15 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.vetapp.R
 import com.example.vetapp.viewModel.LoginViewModel
+import com.example.vetapp.viewModel.UserPetsViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class LoginFragment : Fragment() {
     lateinit var sharedPreferences: SharedPreferences
-    val loginViewModel = LoginViewModel()
+   private lateinit var loginViewModel: LoginViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +41,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         observerLiveData()
         action()
