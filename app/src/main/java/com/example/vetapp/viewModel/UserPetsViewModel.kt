@@ -1,6 +1,8 @@
 package com.example.vetapp.viewModel
 
+
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.vetapp.model.PetList
@@ -16,7 +18,7 @@ class UserPetsViewModel:ViewModel() {
     private val vetAPI = VetAPI
 
     fun refreshData(){
-        getPets("123")
+        getPets("124")
     }
 
     fun getPets(mus_id: String) {
@@ -26,6 +28,7 @@ class UserPetsViewModel:ViewModel() {
                 .subscribeWith(object : DisposableSingleObserver<List<PetList>>() {
                     override fun onSuccess(t: List<PetList>) {
                       Log.d("basarili", t.toString())
+
                     }
 
                     override fun onError(e: Throwable) {
