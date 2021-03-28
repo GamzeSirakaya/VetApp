@@ -1,5 +1,6 @@
 package com.example.vetapp.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -13,6 +14,7 @@ class PetListAdapter(val petlist: ArrayList<PetList>) :
 
     class PetViewHolder(var view: RecyclerItemBinding) : RecyclerView.ViewHolder(view.root) {
 
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetViewHolder {
@@ -25,16 +27,18 @@ class PetListAdapter(val petlist: ArrayList<PetList>) :
         )
         return PetViewHolder(view)
     }
+    override fun getItemCount(): Int {
+        return petlist.size
 
+    }
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
-        holder.view.petlist = petlist[position]
+        holder.view.petlistt=petlist[position]
         holder.view.executePendingBindings()
     }
 
-    override fun getItemCount(): Int {
-        return petlist.size
-    }
-    fun update(newList:List<PetList>){
+
+
+    fun update(newList: List<PetList>) {
         petlist.clear()
         petlist.addAll(newList)
         notifyDataSetChanged()
