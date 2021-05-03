@@ -9,7 +9,7 @@ import com.example.vetapp.R
 import com.example.vetapp.databinding.RecyclerItemBinding
 import com.example.vetapp.model.PetList
 
-class PetListAdapter(val petlist: ArrayList<PetList>) :
+class PetListAdapter(var petlist: ArrayList<PetList>) :
     RecyclerView.Adapter<PetListAdapter.PetViewHolder>() {
 
     class PetViewHolder(var view: RecyclerItemBinding) : RecyclerView.ViewHolder(view.root) {
