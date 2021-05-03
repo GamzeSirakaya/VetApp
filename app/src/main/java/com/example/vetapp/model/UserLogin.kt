@@ -6,13 +6,13 @@ data class UserLogin (
     @SerializedName("id")
     val id:Int,
     @SerializedName("kadi")
-    val kadi:String,
+    var kadi:String,
     @SerializedName("mailAdres")
-    val mailAdres:String,
+    var mailAdres:String,
     @SerializedName("parola")
-    val parola:String,
+    var parola:String,
     @SerializedName("tf")
-    val tf:String,
+    var tf:String,
     @SerializedName("text")
-    val text:String
+    var text:String
         )
