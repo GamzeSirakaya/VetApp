@@ -55,22 +55,7 @@ class UserPetsFragment : Fragment() {
 
     fun observeLiveData() {
         petsViewModel.petListLiveData.observe(viewLifecycleOwner, Observer {
-            if (it.get(0).tf) {
-               val petlist= it
-                recyclerAdapter.update(petlist)
-                Toast.makeText(
-                    context,
-                    "Sistemde Kayıtlı "+petlist.size+" bulunmamaktadır.",
-                    Toast.LENGTH_LONG
-                )
-            } else {
-                Toast.makeText(
-                    context,
-                    "Sistemde Kayıtlı petiniz bulunmamaktadır.",
-                    Toast.LENGTH_LONG
-                )
-
-            }
+                recyclerAdapter.update(it)
 
 
 
