@@ -39,7 +39,7 @@
                 android:id="@+id/petid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{petlistt.petid}"
+                android:text="@{petlistt.petId}"
                 android:visibility="invisible"
                 tools:ignore="MissingConstraints" />
 
@@ -48,7 +48,7 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_gravity="center"
-                android:downloadImage="@{petlistt.petresim}"
+                android:downloadImage="@{petlistt.petResim}"
 
                 />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="7dp"
-                android:text="@{petlistt.petcins}"
+                android:text="@{petlistt.petCins}"
 
                 />
 
@@ -69,7 +69,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="7dp"
                 android:layout_toRightOf="@+id/petResim"
-                android:text="@{petlistt.petisim}"
+                android:text="@{petlistt.petIsim}"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
                 android:textSize="13sp" />
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="@{petlistt.pettur}"
+                    android:text="@{petlistt.petTur}"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#7f8c8d"
                     android:textSize="11sp" />
