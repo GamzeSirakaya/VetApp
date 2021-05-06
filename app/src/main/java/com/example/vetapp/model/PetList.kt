@@ -4,12 +4,18 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class PetList(
-    var petid: String,
-    var petisim:String,
-    var petresim:String,
-    var petcins:String,
-    var pettur:String,
-    var tf:Boolean
+    @SerializedName("petid")
+    var petId: String,
+    @SerializedName("petisim")
+    var petIsim: String,
+    @SerializedName("petresim")
+    var petResim: String,
+    @SerializedName("petcins")
+    var petCins: String,
+    @SerializedName("pettur")
+    var petTur: String,
+    @SerializedName("tf")
+    var tf: Boolean
 
 )
 
