@@ -34,8 +34,8 @@
             android:id="@+id/action_homeFragment_to_userPetsFragment"
             app:destination="@id/userPetsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_soruSorFragment"
-            app:destination="@id/soruSorFragment" />
+            android:id="@+id/action_homeFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
     </fragment>
     <fragment
         android:id="@+id/userPetsFragment"
@@ -47,7 +47,7 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/soruSorFragment"
-        android:name="com.example.vetapp.view.SoruSorFragment"
-        android:label="SoruSorFragment" />
+        android:id="@+id/questionFragment"
+        android:name="com.example.vetapp.view.QuestionFragment"
+        android:label="QuestionFragment" />
 </navigation>
