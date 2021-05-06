@@ -12,7 +12,6 @@ import com.example.vetapp.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-
 class HomeFragment : Fragment() {
     // lateinit var sharedPreferences: SharedPreferences
 
@@ -23,9 +22,12 @@ class HomeFragment : Fragment() {
              sharedPreferences.getString("mail",null)==null){
              Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
          }*/
-        action()
+
         soru_sor.setOnClickListener {
             openQuestion(it)
+        }
+        petCard.setOnClickListener {
+            action(it)
         }
 
 
@@ -42,16 +44,14 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun action() {
-        petlerim.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToUserPetsFragment()
-            Navigation.findNavController(it).navigate(action)
+    private fun action(view: View) {
+        val action = HomeFragmentDirections.actionHomeFragmentToUserPetsFragment()
+        Navigation.findNavController(view).navigate(action)
 
-        }
     }
 
     private fun openQuestion(view: View) {
-        val action = HomeFragmentDirections.actionHomeFragmentToSoruSorFragment()
+        val action = HomeFragmentDirections.actionHomeFragmentToQuestionFragment()
         Navigation.findNavController(view).navigate(action)
 
 
