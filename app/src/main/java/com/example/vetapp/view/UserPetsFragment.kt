@@ -1,29 +1,35 @@
 package com.example.vetapp.view
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vetapp.R
 import com.example.vetapp.adapter.PetListAdapter
-import com.example.vetapp.viewModel.UserPetsViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.vetapp.model.PetList
+import com.example.vetapp.network.VetAPI
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_user_pets.*
 
 
 class UserPetsFragment : Fragment() {
-    private lateinit var petsViewModel: UserPetsViewModel
     private val recyclerAdapter = PetListAdapter(arrayListOf())
+
+
+    /*private val TAG: String = UserPetsFragment().javaClass.simpleName
+    private val DEBUG: Boolean = true*/
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        petList()
 
     }
 
@@ -31,37 +37,55 @@ class UserPetsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_user_pets, container, false)
+        //petList()
 
-        return view
+        return inflater.inflate(R.layout.fragment_user_pets, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        petsViewModel = ViewModelProviders.of(this).get(UserPetsViewModel::class.java)
-        petsViewModel.refreshData()
         setupRecycler()
-        observeLiveData()
+        recyclerAdapter.notifyDataSetChanged()
 
 
     }
 
-    fun setupRecycler() {
+    private fun setupRecycler() {
         petRecyclerView.layoutManager = LinearLayoutManager(context)
         petRecyclerView.adapter = recyclerAdapter
 
 
     }
 
-    fun observeLiveData() {
-        petsViewModel.petListLiveData.observe(viewLifecycleOwner, Observer {
-                recyclerAdapter.update(it)
 
+    private fun petList() {
+        VetAPI.getService().getPetList("124")
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe(object : Observer<List<PetList>> {
+                override fun onSubscribe(d: Disposable) {
+                    Log.d("", "PetOnSubscribed")
+                }
 
+                override fun onNext(t: List<PetList>) {
+                    Log.d("", "PetOnNext" + t.get(0).petCins)
+                }
 
-        })
+                override fun onError(e: Throwable) {
+                    Log.d("", "PetOnError" + e.message)
+                }
+
+                override fun onComplete() {
+                    Log.d("", "PetOnComplete")
+                }
+            })
     }
 
+    /*  private fun Log(message: String) {
+          if (DEBUG)
+              Log.d(TAG, message)
+
+      }*/
 
 }
 
