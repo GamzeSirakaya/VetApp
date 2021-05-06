@@ -96,7 +96,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/petlerim"
+                android:id="@+id/petCard"
                 android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
