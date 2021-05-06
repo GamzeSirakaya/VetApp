@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.example.vetapp.R
 import com.example.vetapp.viewModel.LoginViewModel
-import com.example.vetapp.viewModel.UserPetsViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
 
