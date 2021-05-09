@@ -10,21 +10,21 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class LoginViewModel:ViewModel() {
+class LoginViewModel : ViewModel() {
     val userLoginLiveData = MutableLiveData<UserLogin>() //Livedatainnerclass
     private val compositeDisposable = CompositeDisposable() //Rxjava2 inner class
     private val vetAPI = VetAPI
 
-    fun userLogin( mailadres: String, password: String) {
+    fun userLogin(mailadres: String, password: String) {
         compositeDisposable.add(
             vetAPI.getService().getLogin(mailadres, password).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<UserLogin>() {
                     override fun onSuccess(t: UserLogin) {
-                       if(t.tf.toBoolean()){
-                           t.text
+                        if (t.tf.toBoolean()) {
+                            t.text
 
-                       }
+                        }
 
 
                     }
