@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -41,17 +42,22 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
-        questionViewModel.getQuestion("1", "30");
+
         observerLiveData()
         question_button.setOnClickListener {
-            question.text.toString()
+            questionViewModel.getQuestion("30", question.text.toString())
+
+
         }
     }
 
-    fun observerLiveData() {
-        questionViewModel.questiondata.observe(viewLifecycleOwner, Observer {
-
+    private fun observerLiveData() {
+        questionViewModel.questionData.observe(viewLifecycleOwner, Observer {
+            it.let { Question ->
+                Question
+                Toast.makeText(context, it.text, Toast.LENGTH_LONG).show()
+            }
         })
 
-}
+    }
 }
