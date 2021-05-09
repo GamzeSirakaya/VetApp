@@ -29,7 +29,6 @@ class UserPetsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        petList()
 
     }
 
@@ -45,6 +44,7 @@ class UserPetsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
+        petList()
         recyclerAdapter.notifyDataSetChanged()
 
 
