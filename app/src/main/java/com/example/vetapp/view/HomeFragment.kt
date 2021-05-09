@@ -29,8 +29,16 @@ class HomeFragment : Fragment() {
         petCard.setOnClickListener {
             action(it)
         }
+        cevap.setOnClickListener {
+            answer(it)
+        }
 
 
+    }
+
+    private fun answer(view: View) {
+        val action = HomeFragmentDirections.actionHomeFragmentToAnswerFragment()
+        Navigation.findNavController(view).navigate(action)
     }
 
     override fun onCreateView(
