@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_homeFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_answerFragment"
+            app:destination="@id/answerFragment" />
     </fragment>
     <fragment
         android:id="@+id/userPetsFragment"
@@ -50,4 +53,9 @@
         android:id="@+id/questionFragment"
         android:name="com.example.vetapp.view.QuestionFragment"
         android:label="QuestionFragment" />
+    <fragment
+        android:id="@+id/answerFragment"
+        android:name="com.example.vetapp.view.AnswerFragment"
+        android:label="fragment_answer"
+        tools:layout="@layout/fragment_answer" />
 </navigation>
