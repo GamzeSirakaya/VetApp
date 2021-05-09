@@ -16,30 +16,30 @@ import io.reactivex.schedulers.SchedulerRunnableIntrospection
 import io.reactivex.schedulers.Schedulers
 
 class QuestionViewModel : ViewModel() {
-    val questiondata = MutableLiveData<Question>()
-    private val vetAPI = VetAPI
+    val questionData = MutableLiveData<Question>()
+
 
 
     fun getQuestion(id: String, soru: String) {
 
-        vetAPI.getService().getQuestion(id, soru)
+        VetAPI.getService().getQuestion(id, soru)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<Question> {
                 override fun onSubscribe(d: Disposable) {
-                    Log.d("", "ServiceOnSubscribed")
+                    Log.d("ServiceOnSubscribed", "ServiceOnSubscribed")
                 }
 
                 override fun onNext(t: Question) {
-                    Log.d("", "ServiceOnNext")
+                    Log.d("ServiceOnNext", "ServiceOnNext")
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.d("", "ServiceOnError")
+                    Log.d("ServiceOnError", "ServiceOnError")
                 }
 
                 override fun onComplete() {
-                    Log.d("", "ServiceOnComplete")
+                    Log.d("ServiceOnComplete", "ServiceOnComplete")
                 }
 
             })
