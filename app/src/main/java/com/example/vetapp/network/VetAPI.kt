@@ -1,9 +1,6 @@
 package com.example.vetapp.network
 
-import com.example.vetapp.model.PetList
-import com.example.vetapp.model.Question
-import com.example.vetapp.model.UserLogin
-import com.example.vetapp.model.UserRegister
+import com.example.vetapp.model.*
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.Retrofit
@@ -38,7 +35,19 @@ interface VetAPI {
 
     @FormUrlEncoded
     @POST("sorusor.php")
-    fun getQuestion(@Field("id") id: String, @Field("soru") soru: String): Observable<Question>
+    fun getQuestion(@Field("mus_id") id: String, @Field("soru") soru: String): Observable<Question>
+
+    @FormUrlEncoded
+    @POST("cevap.php")
+    fun getAnswer(@Field("mus_id") mus_id: String): Observable<List<Answer>>
+
+    @FormUrlEncoded
+    @POST("cevapsil.php")
+    fun getRemoveAnswer(
+        @Field("cevap") cevap: String,
+        @Field("soru") soru: String
+    ): Observable<AnswerRemove>
+
 
     companion object {
         const val BASE_URL = "https://www.gamzesirakaya.com/veterinerservis/"
