@@ -16,13 +16,11 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
     lateinit var sharedPreferences: SharedPreferences
-   private lateinit var loginViewModel: LoginViewModel
+    private lateinit var loginViewModel: LoginViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
 
 
     }
@@ -48,7 +46,7 @@ class LoginFragment : Fragment() {
 
     }
 
-    fun action() {
+    private fun action() {
         login_text.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registerFragment)
 
@@ -64,12 +62,12 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun delete() {
+    private fun delete() {
         login_mail.setText("")
         login_password.setText("")
     }
 
-    fun observerLiveData() {
+    private fun observerLiveData() {
         loginViewModel.userLoginLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it.let { userLogin ->
                 userLogin
