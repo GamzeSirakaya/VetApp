@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment() {
 
- private lateinit var registerViewModel :RegisterViewModel
+    private lateinit var registerViewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +41,9 @@ class RegisterFragment : Fragment() {
         delete()
 
 
-
     }
 
-    fun registerToUser() {
+   private fun registerToUser() {
         register_button.setOnClickListener {
 
             registerViewModel.userRegister(
@@ -57,19 +56,19 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    fun delete() {
+    private fun delete() {
         register_name.setText("")
         register_mail.setText("")
         register_password.setText("")
     }
 
-    fun action() {
+    private fun action() {
         register_text.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }
 
-    fun observerLiveData() {
+    private fun observerLiveData() {
         registerViewModel.userRegisterLiveData.observe(
             viewLifecycleOwner,
             androidx.lifecycle.Observer {
