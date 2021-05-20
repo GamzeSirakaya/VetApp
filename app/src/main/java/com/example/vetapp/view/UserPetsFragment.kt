@@ -7,12 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vetapp.R
 import com.example.vetapp.adapter.PetListAdapter
+import com.example.vetapp.model.Answer
 import com.example.vetapp.model.PetList
 import com.example.vetapp.network.VetAPI
-import io.reactivex.Observer
+import com.example.vetapp.viewModel.AnswerViewModel
+import com.example.vetapp.viewModel.PetListViewModel
+import com.example.vetapp.viewModel.QuestionViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -20,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_user_pets.*
 
 
 class UserPetsFragment : Fragment() {
+    private lateinit var petListViewModel: PetListViewModel
     private val recyclerAdapter = PetListAdapter(arrayListOf())
 
 
@@ -36,16 +42,16 @@ class UserPetsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //petList()
 
         return inflater.inflate(R.layout.fragment_user_pets, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        petListViewModel = ViewModelProviders.of(this).get(PetListViewModel::class.java)
+        petListViewModel.petList()
         setupRecycler()
-        petList()
-        recyclerAdapter.notifyDataSetChanged()
+        observer()
 
 
     }
@@ -57,35 +63,13 @@ class UserPetsFragment : Fragment() {
 
     }
 
+    private fun observer() {
+        petListViewModel.petList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            recyclerAdapter.update(it)
+        })
 
-    private fun petList() {
-        VetAPI.getService().getPetList("124")
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe(object : Observer<List<PetList>> {
-                override fun onSubscribe(d: Disposable) {
-                    Log.d("", "PetOnSubscribed")
-                }
-
-                override fun onNext(t: List<PetList>) {
-                    Log.d("", "PetOnNext" + t.get(0).petCins)
-                }
-
-                override fun onError(e: Throwable) {
-                    Log.d("", "PetOnError" + e.message)
-                }
-
-                override fun onComplete() {
-                    Log.d("", "PetOnComplete")
-                }
-            })
     }
 
-    /*  private fun Log(message: String) {
-          if (DEBUG)
-              Log.d(TAG, message)
-
-      }*/
 
 }
 
