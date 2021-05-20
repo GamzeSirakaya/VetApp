@@ -16,6 +16,8 @@ import io.reactivex.schedulers.SchedulerRunnableIntrospection
 import io.reactivex.schedulers.Schedulers
 
 class QuestionViewModel : ViewModel() {
+    private val DEBUG = true
+    private val TAG: String = QuestionViewModel::class.java.simpleName
     val questionData = MutableLiveData<Question>()
 
 
@@ -27,22 +29,29 @@ class QuestionViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<Question> {
                 override fun onSubscribe(d: Disposable) {
-                    Log.d("ServiceOnSubscribed", "ServiceOnSubscribed")
+                    Log( "ServiceOnSubscribed")
                 }
 
                 override fun onNext(t: Question) {
-                    Log.d("ServiceOnNext", "ServiceOnNext")
+                    Log("ServiceOnNext"+t.text)
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.d("ServiceOnError", "ServiceOnError")
+                    Log("ServiceOnError"+e.message)
                 }
 
                 override fun onComplete() {
-                    Log.d("ServiceOnComplete", "ServiceOnComplete")
+                    Log("ServiceOnComplete")
                 }
 
             })
+
+
+    }
+    private fun Log(message: String) {
+        if (DEBUG)
+            Log.d(TAG, message)
+
 
 
     }
