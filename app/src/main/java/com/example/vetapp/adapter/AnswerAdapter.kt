@@ -22,7 +22,8 @@ import kotlinx.coroutines.newFixedThreadPoolContext
 
 class AnswerAdapter(var answerList: ArrayList<Answer>) :
     RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder>() {
-    class AnswerViewHolder(var itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    class AnswerViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
     }
 
@@ -37,10 +38,14 @@ class AnswerAdapter(var answerList: ArrayList<Answer>) :
     }
 
     override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
-        holder.itemView.questionText.text = answerList[position].soru
-        holder.itemView.answerText.text = answerList[position].cevap
-        holder.itemView.removeBtn.setOnClickListener {
-            delete(answerList[position].cevapId.toString(), answerList[position].soruId.toString());
+        holder.itemView.apply {
+            questionText.text=answerList[position].soru
+            answerText.text=answerList[position].cevap
+            removeBtn.setOnClickListener{
+                delete(answerList[position].cevapId.toString(), answerList[position].soruId.toString());
+            }
+
+
         }
 
 
