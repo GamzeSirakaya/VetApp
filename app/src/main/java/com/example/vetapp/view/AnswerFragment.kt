@@ -37,8 +37,9 @@ class AnswerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         answerViewModel = ViewModelProviders.of(this).get(AnswerViewModel::class.java)
-        answerViewModel.getAnswer("30")
+        answerViewModel.refreshData("30")
         setupRecycler()
         observerLiveData()
 
@@ -49,6 +50,7 @@ class AnswerFragment : Fragment() {
         answerViewModel.answerViewModel.observe(viewLifecycleOwner, Observer {
             it.let {
                 answerRecycler.visibility = View.VISIBLE
+                answerAdapter.update(it)
             }
         })
     }
