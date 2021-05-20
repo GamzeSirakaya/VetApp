@@ -1,8 +1,6 @@
 package com.example.vetapp.viewModel
 
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.vetapp.model.Answer
@@ -13,9 +11,15 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class AnswerViewModel : ViewModel() {
+    private val DEBUG = true
+    private val TAG: String = AnswerViewModel::class.java.simpleName
 
-    val answerViewModel = MutableLiveData<List<AnswerViewModel>>()
+    val answerViewModel = MutableLiveData<List<Answer>>()
 
+
+    fun refreshData(mus_id: String) {
+        getAnswer(mus_id)
+    }
 
     fun getAnswer(mus_id: String) {
         VetAPI.getService().getAnswer(mus_id)
@@ -23,27 +27,31 @@ class AnswerViewModel : ViewModel() {
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<List<Answer>> {
                 override fun onSubscribe(d: Disposable) {
-                    Log.d("ServiceOnSubscribed", "ServiceOnSubscribed")
+                    Log("ServiceOnSubscribed")
+
                 }
 
                 override fun onNext(t: List<Answer>) {
-                    Log.d("ServiceOnNext", "ServiceOnNext" + t[0].cevap)
-                    if (t[0].tf) {
-                       Log.i("Cevaplarım",t[0].toString())
+                    Log("ServiceOnNext" + t[0].toString())
+                    answerViewModel.value=t
 
-                    } else {
-
-                    }
                 }
 
                 override fun onError(e: Throwable) {
-                    Log.d("ServiceOnError", "ServiceOnError" + e.message)
+                    Log("ServiceOnError" + e.message)
                 }
 
                 override fun onComplete() {
-                    Log.d("ServiceOnComplete", "ServiceOnComplete")
+                    Log("ServiceOnComplete")
                 }
 
             })
+    }
+
+    private fun Log(message: String) {
+        if (DEBUG)
+            Log.d(TAG, message)
+
+
     }
 }
