@@ -22,6 +22,7 @@ import kotlinx.coroutines.newFixedThreadPoolContext
 
 class AnswerAdapter(var answerList: ArrayList<Answer>) :
     RecyclerView.Adapter<AnswerAdapter.AnswerViewHolder>() {
+    private lateinit var answerRemove: AnswerRemove
 
     class AnswerViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
@@ -39,10 +40,13 @@ class AnswerAdapter(var answerList: ArrayList<Answer>) :
 
     override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
         holder.itemView.apply {
-            questionText.text=answerList[position].soru
-            answerText.text=answerList[position].cevap
-            removeBtn.setOnClickListener{
-                delete(answerList[position].cevapId.toString(), answerList[position].soruId.toString());
+            questionText.setText("Soru :" + answerList[position].soru)
+            answerText.setText("Cevap :" + answerList[position].cevap)
+            removeBtn.setOnClickListener {
+                delete(
+                    answerList[position].cevapId.toString(),
+                    answerList[position].soruId.toString()
+                );
             }
 
 
@@ -72,7 +76,7 @@ class AnswerAdapter(var answerList: ArrayList<Answer>) :
                 }
 
                 override fun onNext(t: AnswerRemove) {
-
+                    answerRemove = t
 
                 }
 
