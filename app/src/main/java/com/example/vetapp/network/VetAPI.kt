@@ -8,6 +8,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 
@@ -32,6 +33,11 @@ interface VetAPI {
     fun getPetList(
         @Field("musid") mus_id: String,
     ): Observable<List<PetList>>
+
+
+    @GET("kampanya.php")
+    fun getCampaignList(
+    ): Observable<List<Campaign>>
 
     @FormUrlEncoded
     @POST("sorusor.php")
