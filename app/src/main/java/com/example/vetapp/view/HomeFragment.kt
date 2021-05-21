@@ -32,6 +32,10 @@ class HomeFragment : Fragment() {
         cevap.setOnClickListener {
             answer(it)
         }
+        campaignCard.setOnClickListener {
+            campaignAction(it)
+
+        }
 
 
     }
@@ -50,7 +54,11 @@ class HomeFragment : Fragment() {
 
 
     }
+    private fun campaignAction(view: View) {
+        val action =HomeFragmentDirections.actionHomeFragmentToCampaignFragment()
+        Navigation.findNavController(view).navigate(action)
 
+    }
 
     private fun action(view: View) {
         val action = HomeFragmentDirections.actionHomeFragmentToUserPetsFragment()
