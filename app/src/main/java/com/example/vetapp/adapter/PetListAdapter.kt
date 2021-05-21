@@ -38,8 +38,9 @@ class PetListAdapter(var petlist: ArrayList<PetList>) :
 
     override fun onBindViewHolder(holder: PetViewHolder, position: Int) {
         holder.itemView.apply {
-            petisim.text = petlist[position].petIsim
-            petCins.text = petlist[position].petCins
+            petTur.setText("Tür: " + petlist[position].petTur)
+            petCins.setText("Cins: " + petlist[position].petCins)
+            petisim.setText("isim: " + petlist[position].petIsim)
             Glide.with(this).load(petlist[position].petResim).into(petResim)
         }
     }
