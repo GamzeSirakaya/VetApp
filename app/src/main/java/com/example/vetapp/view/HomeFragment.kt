@@ -36,6 +36,9 @@ class HomeFragment : Fragment() {
             campaignAction(it)
 
         }
+        pet_asi_takibi.setOnClickListener {
+            vaccineAction(it)
+        }
 
 
     }
@@ -56,6 +59,11 @@ class HomeFragment : Fragment() {
     }
     private fun campaignAction(view: View) {
         val action =HomeFragmentDirections.actionHomeFragmentToCampaignFragment()
+        Navigation.findNavController(view).navigate(action)
+
+    }
+    private fun vaccineAction(view: View) {
+        val action = HomeFragmentDirections.actionHomeFragmentToVaccineFragment()
         Navigation.findNavController(view).navigate(action)
 
     }
