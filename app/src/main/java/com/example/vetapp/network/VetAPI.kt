@@ -53,6 +53,9 @@ interface VetAPI {
         @Field("cevap") cevap: String,
         @Field("soru") soru: String
     ): Observable<AnswerRemove>
+    @FormUrlEncoded
+    @POST("asitakip.php")
+    fun getAsiTakibi(@Field("mus_id") mus_id: String): Observable<List<Vaccine>>
 
 
     companion object {
