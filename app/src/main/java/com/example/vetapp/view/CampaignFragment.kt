@@ -31,7 +31,6 @@ class CampaignFragment : Fragment() {
     private lateinit var campaignViewModel: CampaignViewModel
     private val recyclerAdapter = CampaignAdapter(arrayListOf())
 
-
     /*private val TAG: String = UserPetsFragment().javaClass.simpleName
     private val DEBUG: Boolean = true*/
 
